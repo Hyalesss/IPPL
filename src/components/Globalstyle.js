@@ -16,4 +16,6 @@ export const FontFamily = {
     primary950: "#283321",
     primaryBaseColor: "#94a684",
   };
+
+  
   

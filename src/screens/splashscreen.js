@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 
 const Splashscreen = () => {
 
-    const navigation = useNavigation();
+  const navigation = useNavigation();
 
   useEffect(() => {
     const timer = setTimeout(() => {

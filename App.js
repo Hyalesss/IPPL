@@ -1,11 +1,11 @@
 import React from 'react';
 import { NavigationContainer } from "@react-navigation/native"
 import { createStackNavigator } from '@react-navigation/stack';
-import { Text, View } from 'react-native';
 
 import Splashscreen from './src/screens/splashscreen';
+import Mainmenuu from './src/screens/Mainmenu';
 import Onboarding1 from './src/screens/onboard';
-
+import Onboarding2 from './src/screens/onboard2';
 
 const Stack = createStackNavigator();
 
@@ -15,6 +15,8 @@ const App = () =>{
       <Stack.Navigator initialRouteName="Splash">
         <Stack.Screen name="Splash" component={Splashscreen} options={{ headerShown: false }} />
         <Stack.Screen name="OnBoarding" component={Onboarding1} options={{ headerShown: false }} />
+        <Stack.Screen name="Onboarding2" component={Onboarding2} options={{ headerShown: false }} />
+        <Stack.Screen name="MainMenu" component={Mainmenuu} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

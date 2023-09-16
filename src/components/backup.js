@@ -4,17 +4,15 @@ import {  FontSize, Color } from "../components/Globalstyle";
 import { useNavigation } from '@react-navigation/native';
 
 
+
 const Onboarding1 = () => {
 
   const navigation = useNavigation();
 
   const handelSkip = () => {
-    navigation.navigate("MainMenu"); 
+    navigation.navigate("MainMenu");
   }
 
-  const nextcontent = () =>{
-    navigation.navigate("Onboarding3");
-  }
   return (
     <View style={styles.onboarding1}>
       <View style={styles.frameParent}>
@@ -32,10 +30,6 @@ const Onboarding1 = () => {
       </View>
       <TouchableOpacity onPress={handelSkip}>
         <Text style={[styles.lewati, styles.lewatiTypo]}>Lewati</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity onPress={nextcontent}>
-        <Text style={[styles.selanjutnya, styles.lewatiTypo]}>Selanjutnya</Text>
       </TouchableOpacity>
     </View>
   );
@@ -91,10 +85,6 @@ const styles = StyleSheet.create({
     left: 299,
     color: Color.secondaryInfo,
     position: "absolute",
-  },
-  selanjutnya:{
-    top:550,
-    color : Color.primaryBaseColor,
   },
   onboarding1: {
     backgroundColor: Color.naturalLightMode,
