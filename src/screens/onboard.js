@@ -13,7 +13,7 @@ const Onboarding1 = () => {
   }
 
   const nextcontent = () =>{
-    navigation.navigate("Onboarding3");
+    navigation.navigate("Onboarding2");
   }
   return (
     <View style={styles.onboarding1}>

@@ -12,7 +12,7 @@ const Onboarding2 = () => {
   }
 
   const nextcontent = () =>{
-    navigation.navigate("Onboarding2");
+    navigation.navigate("Onboarding3");
   }
 
   return (
