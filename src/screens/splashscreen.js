@@ -7,13 +7,10 @@ const Splashscreen = () => {
   const navigation = useNavigation();
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      navigation.navigate('OnBoarding');
+    setTimeout(() => {
+      navigation.navigate('Onboarding1');
     }, 2000);
-
-    return () => clearTimeout(timer);
-  }, [navigation]);
-
+  }, []);
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>

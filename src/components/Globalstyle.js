@@ -21,6 +21,14 @@ export const FontFamily = {
     primary100: "#e7ebe0",
   };
 
+  export const ColorDark = {
+    naturalNightMode: "#333",
+    naturalWhiteText: "#fff",
+    primary100: "#e7ebe0",
+    primaryBaseColor: "#94a684",
+    secondaryInfo: "#646ba6",
+  };
+
   export const StyleVariable = {
     roundLG: 12,
   };

@@ -1,13 +1,46 @@
-import * as React from "react";
-import { Text, StyleSheet, View, Pressable } from "react-native";
+import React, { useState, useEffect } from 'react';
+import { Text, StyleSheet, View, Pressable , TouchableOpacity } from "react-native";
 import { Image } from "react-native";
 import {
   Color,
   FontSize,
+  Padding,
+  StyleVariable,
+  FontFamily,
+  ColorDark
 } from "../components/Globalstyle";
 import Buttonfap from '../components/buttonfap'
+import { useNavigation } from '@react-navigation/native';
+import { BackHandler } from 'react-native';
+
 
 const Mainmenuu = () => {
+
+  const navigation = useNavigation();
+
+  const exitApp = () => {
+    BackHandler.exitApp();
+  }
+
+  const EdukasiScreen = () =>{
+    navigation.navigate("Edukasi");
+  }
+
+  const CatatanHarian = () =>{
+    navigation.navigate("Catatan");
+  }
+
+  useEffect(() => {
+    const backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
+      BackHandler.exitApp();
+      return true;
+    });
+
+    return () => {
+      backHandler.remove();
+    };
+  }, []);
+
   return (
     <View style={styles.homeScreen}>
       <View style={styles.frameParent}>
@@ -17,11 +50,6 @@ const Mainmenuu = () => {
           </Text>
           <Text style={styles.janganLupaJaga}>Jangan lupa jaga kesehatan</Text>
         </View>
-        <Image
-          style={[styles.materialSymbolsmodeNightOuIcon, styles.iconLayout]}
-          contentFit="cover"
-          source={require("../assets/night_light_mode.png")}
-        />
       </View>
       <View style={[styles.frameGroup, styles.frameFlexBox]}>
         <View style={styles.pendeteksiKontenParent}>
@@ -39,12 +67,12 @@ const Mainmenuu = () => {
         />
       </View>
       <View style={[styles.frameContainer, styles.frameFlexBox]}>
-        <Pressable
+        <TouchableOpacity
           style={[
             styles.edukasiKesehatanParent,
             styles.onOfBarMockupSpaceBlock,
           ]}
-          onPress={() => {}}
+          onPress={EdukasiScreen}
         >
           <Text style={styles.edukasiKesehatan}>{`Edukasi 
 Kesehatan`}</Text>
@@ -53,13 +81,13 @@ Kesehatan`}</Text>
             contentFit="cover"
             source={require("../assets/tdesign_book.png")}
           />
-        </Pressable>
-        <Pressable
+        </TouchableOpacity>
+        <TouchableOpacity
           style={[
             styles.edukasiKesehatanParent,
             styles.onOfBarMockupSpaceBlock,
           ]}
-          onPress={() => {}}
+          onPress={CatatanHarian}
         >
           <Text style={styles.edukasiKesehatan}>{`Catatan
 Harian`}</Text>
@@ -68,11 +96,26 @@ Harian`}</Text>
             contentFit="cover"
             source={require("../assets/ph_pen.png")}
           />
-        </Pressable>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[
+            styles.edukasiKesehatanParent,
+            styles.onOfBarMockupSpaceBlock,
+          ]}
+          onPress={exitApp}
+        >
+          <Text style={styles.edukasiKesehatan}>{`Keluar Aplikasi`}</Text>
+          <Image
+            style={styles.iconLayout}
+            contentFit="cover"
+            source={require("../assets/solar_exit-outline.png")}
+          />
+        </TouchableOpacity>
       </View>
     </View>
   );
 };
+
 
 const styles = StyleSheet.create({
   halloTemanFlexBox: {
@@ -90,18 +133,20 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   onOfBarMockupSpaceBlock: {
-    paddingHorizontal: 5,
-    borderRadius: 20,
+    paddingHorizontal: Padding.p_5xs,
+    borderRadius: StyleVariable.roundLG,
   },
   halloTeman: {
-    fontSize: 18,
+    fontSize: FontSize.heading324Heading32403_size,
     lineHeight: 32,
     fontWeight: "600",
+    fontFamily: FontFamily.heading324Heading32403,
   },
   janganLupaJaga: {
     fontSize: FontSize.text12Text1201_size,
     lineHeight: 14,
     marginTop: 8,
+    fontFamily: FontFamily.text14Text1401,
     textAlign: "left",
     color: Color.primaryBaseColor,
   },
@@ -113,9 +158,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   pendeteksiKonten: {
-    fontSize: 18,
+    fontSize: FontSize.text18Text1804_size,
     lineHeight: 23,
     fontWeight: "700",
+    fontFamily: FontFamily.text18Text1804,
   },
   pendeteksiKontenParent: {
     justifyContent: "center",
@@ -128,7 +174,7 @@ const styles = StyleSheet.create({
   onOfBarMockup: {
     backgroundColor: Color.primary100,
     width: 100,
-    paddingVertical: 8,
+    paddingVertical: Padding.p_xs,
     marginLeft: 8,
     justifyContent: "center",
   },
@@ -136,17 +182,18 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   edukasiKesehatan: {
-    fontSize: FontSize.text14Text1401_size,
+    fontSize: FontSize.text14Text1402_size,
     lineHeight: 22,
     color: Color.naturalLightMode,
     alignSelf: "stretch",
+    fontFamily: FontFamily.text14Text1401,
     textAlign: "left",
   },
   edukasiKesehatanParent: {
-    backgroundColor: Color.naturalWhiteText,
+    backgroundColor: ColorDark.naturalNightMode,
     width: 156,
     height: 150,
-    paddingVertical: 12,
+    paddingVertical: Padding.p_base,
     alignItems: "flex-end",
     justifyContent: "space-between",
     overflow: "hidden",
@@ -154,12 +201,13 @@ const styles = StyleSheet.create({
   frameContainer: {
     flexWrap: "wrap",
     justifyContent: "space-between",
+    rowGap:20,
   },
   homeScreen: {
     backgroundColor: Color.naturalLightMode,
     width: "100%",
     height: 800,
-    paddingHorizontal: 12,
+    paddingHorizontal: Padding.p_base,
     paddingVertical: 48,
     overflow: "hidden",
     flex: 1,
