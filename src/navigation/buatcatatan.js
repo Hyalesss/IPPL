@@ -3,6 +3,7 @@ import { getDatabase, ref, push, set } from "firebase/database";
 import { Alert, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React, { Component } from "react";
 import Inputdata from "../components/Inputdata";
+import { Color } from "../components/Globalstyle";
 
 
 // Konfigurasi Firebase Anda
@@ -47,6 +48,7 @@ export default class BuatCatatan extends Component {
       const newCatatanKey = newCatatanRef.key;
 
       const catatanku = {
+        id : newCatatanKey,
         judul: judul,
         catatan: catatan
       };
@@ -54,7 +56,7 @@ export default class BuatCatatan extends Component {
       set(newCatatanRef, catatanku)
         .then(() => {
           Alert.alert("Sukses", "Data berhasil ditambah");
-          this.props.navigation.navigate("Catatan"); // Berpindah ke CatatanHarian
+          this.props.navigation.navigate("CatatanCuy");
         })
         .catch((error) => {
           console.error("Error menambahkan data:", error);
@@ -95,7 +97,7 @@ const styles = StyleSheet.create({
     padding: 20
   },
   tombol: {
-    backgroundColor: "blue",
+    backgroundColor: Color.primaryBaseColor,
     padding: 10,
     borderRadius: 8
   },

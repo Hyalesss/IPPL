@@ -11,6 +11,8 @@ import Onboarding1 from './src/screens/onboard';
 import Onboarding2 from './src/screens/onboard2';
 import Onboarding3 from './src/screens/onboard3';
 import BuatCatatan from './src/navigation/buatcatatan';
+import DetailCatatan from './src/navigation/detailcatatan';
+
 
 const Stack = createStackNavigator();
 
@@ -25,6 +27,12 @@ const CatatanFitur = () => (
     <Stack.Screen name="CatatanFitur" component={CatatanHarian} options={{ headerShown: false }} />
   </Stack.Navigator>
 );
+
+// const DetailCatatanScreen = () => ( 
+//   <Stack.Navigator>
+//     <Stack.Screen name="DetailCatatanCRUD" component={DetailCatatan} options={{ headerShown: false }} />
+//   </Stack.Navigator>
+// );
 
 const App = () => {
   const [hasSeenSplash, setHasSeenSplash] = useState(false);
@@ -61,9 +69,10 @@ const App = () => {
         <Stack.Screen name="Onboarding2" component={Onboarding2} options={{ headerShown: false }} />
         <Stack.Screen name="Onboarding3" component={Onboarding3} options={{ headerShown: false }} />
         <Stack.Screen name="MainMenu" component={Mainmenuu} options={{ headerShown: false }} />
-        <Stack.Screen name="Edukasi" component={EdukasiFitur} />
-        <Stack.Screen name="Catatan" component={CatatanFitur} />
+        <Stack.Screen name="EdukasiCuy" component={EdukasiFitur} />
+        <Stack.Screen name="CatatanCuy" component={CatatanFitur} />
         <Stack.Screen name="BuatCatatan" component={BuatCatatan} />
+        <Stack.Screen name="DetailCatatan" component={DetailCatatan} /> 
       </Stack.Navigator>
     </NavigationContainer>
   );

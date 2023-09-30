@@ -23,11 +23,11 @@ const Mainmenuu = () => {
   }
 
   const EdukasiScreen = () =>{
-    navigation.navigate("Edukasi");
+    navigation.navigate("EdukasiCuy");
   }
 
   const CatatanHarian = () =>{
-    navigation.navigate("Catatan");
+    navigation.navigate("CatatanCuy");
   }
 
   useEffect(() => {
