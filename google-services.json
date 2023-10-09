@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "396466595004",
+    "project_id": "notifcationippl",
+    "storage_bucket": "notifcationippl.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:396466595004:android:dc06b957e90294d6eddcb9",
+        "android_client_info": {
+          "package_name": "com.Alesscorp.Nofap"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwoMHwWTfGe6E8TK0YLaUjHRk97HV7L98"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

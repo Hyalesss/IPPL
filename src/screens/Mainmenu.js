@@ -30,6 +30,10 @@ const Mainmenuu = () => {
     navigation.navigate("CatatanCuy");
   }
 
+  const notiffitur = () => {
+    navigation.navigate("fiturnotif")
+  }
+
   useEffect(() => {
     const backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
       BackHandler.exitApp();
@@ -91,6 +95,20 @@ Kesehatan`}</Text>
         >
           <Text style={styles.edukasiKesehatan}>{`Catatan
 Harian`}</Text>
+          <Image
+            style={styles.iconLayout}
+            contentFit="cover"
+            source={require("../assets/ph_pen.png")}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[
+            styles.edukasiKesehatanParent,
+            styles.onOfBarMockupSpaceBlock,
+          ]}
+          onPress={notiffitur}
+        >
+          <Text style={styles.edukasiKesehatan}>{`Notifikasi`}</Text>
           <Image
             style={styles.iconLayout}
             contentFit="cover"

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useRef ,useState, useEffect } from 'react';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -12,6 +12,7 @@ import Onboarding2 from './src/screens/onboard2';
 import Onboarding3 from './src/screens/onboard3';
 import BuatCatatan from './src/navigation/buatcatatan';
 import DetailCatatan from './src/navigation/detailcatatan';
+import notiffitur from './src/components/notifmuncul'
 
 
 const Stack = createStackNavigator();
@@ -28,13 +29,8 @@ const CatatanFitur = () => (
   </Stack.Navigator>
 );
 
-// const DetailCatatanScreen = () => ( 
-//   <Stack.Navigator>
-//     <Stack.Screen name="DetailCatatanCRUD" component={DetailCatatan} options={{ headerShown: false }} />
-//   </Stack.Navigator>
-// );
+export default function App() {
 
-const App = () => {
   const [hasSeenSplash, setHasSeenSplash] = useState(false);
   const [hasSeenOnboarding, setHasSeenOnboarding] = useState(false);
 
@@ -69,13 +65,12 @@ const App = () => {
         <Stack.Screen name="Onboarding2" component={Onboarding2} options={{ headerShown: false }} />
         <Stack.Screen name="Onboarding3" component={Onboarding3} options={{ headerShown: false }} />
         <Stack.Screen name="MainMenu" component={Mainmenuu} options={{ headerShown: false }} />
+        <Stack.Screen name="fiturnotif" component={notiffitur} />
         <Stack.Screen name="EdukasiCuy" component={EdukasiFitur} />
         <Stack.Screen name="CatatanCuy" component={CatatanFitur} />
         <Stack.Screen name="BuatCatatan" component={BuatCatatan} />
-        <Stack.Screen name="DetailCatatan" component={DetailCatatan} /> 
+        <Stack.Screen name="DetailCatatan" component={DetailCatatan} />
       </Stack.Navigator>
     </NavigationContainer>
   );
-};
-
-export default App;
+}
