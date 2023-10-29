@@ -4,6 +4,7 @@
     "slug": "IPPL",
     "version": "1.0.0",
     "orientation": "portrait",
+    "icon": "./src/assets/logofap.png",
     "userInterfaceStyle": "light",
     "splash": {
       "resizeMode": "contain",

@@ -12,6 +12,7 @@ import {
 import Buttonfap from '../components/buttonfap'
 import { useNavigation } from '@react-navigation/native';
 import { BackHandler } from 'react-native';
+import MyWebView from '../components/webview';
 
 
 const Mainmenuu = () => {
@@ -31,7 +32,7 @@ const Mainmenuu = () => {
   }
 
   const notiffitur = () => {
-    navigation.navigate("fiturnotif")
+    navigation.navigate("Notifikasi")
   }
 
   useEffect(() => {
@@ -54,21 +55,35 @@ const Mainmenuu = () => {
           </Text>
           <Text style={styles.janganLupaJaga}>Jangan lupa jaga kesehatan</Text>
         </View>
+        <TouchableOpacity
+          style={[
+            styles.notifParent,
+            styles.onOfBarMockupSpaceBlock,
+          ]}
+          onPress={notiffitur}
+        >
+          <Image
+            style={styles.iconLayout}
+            contentFit="cover"
+            source={require("../assets/notipip.png")}
+          />
+        </TouchableOpacity>
       </View>
       <View style={[styles.frameGroup, styles.frameFlexBox]}>
-        <View style={styles.pendeteksiKontenParent}>
+        {/* <View style={styles.pendeteksiKontenParent}>
           <Text style={[styles.pendeteksiKonten, styles.halloTemanFlexBox]}>
             Pendeteksi Konten
           </Text>
           <Text style={styles.janganLupaJaga}>
-            Mendapatkan notifikasi real-time
+            Mendeteksi Konten Dewasa
           </Text>
-        </View>
-        <Buttonfap
+        </View> */}
+        {/* <Buttonfap
           ellipse4={require("../assets/tombolmati.png")}
           property1Frame18Position="unset"
           property1Frame18MarginLeft={8}
-        />
+        /> */}
+      <MyWebView/>
       </View>
       <View style={[styles.frameContainer, styles.frameFlexBox]}>
         <TouchableOpacity
@@ -95,20 +110,6 @@ Kesehatan`}</Text>
         >
           <Text style={styles.edukasiKesehatan}>{`Catatan
 Harian`}</Text>
-          <Image
-            style={styles.iconLayout}
-            contentFit="cover"
-            source={require("../assets/ph_pen.png")}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[
-            styles.edukasiKesehatanParent,
-            styles.onOfBarMockupSpaceBlock,
-          ]}
-          onPress={notiffitur}
-        >
-          <Text style={styles.edukasiKesehatan}>{`Notifikasi`}</Text>
           <Image
             style={styles.iconLayout}
             contentFit="cover"
@@ -174,6 +175,7 @@ const styles = StyleSheet.create({
   frameParent: {
     alignItems: "center",
     flexDirection: "row",
+    justifyContent: "space-between"
   },
   pendeteksiKonten: {
     fontSize: FontSize.text18Text1804_size,
@@ -199,6 +201,14 @@ const styles = StyleSheet.create({
   frameGroup: {
     alignItems: "center",
   },
+  notiptext: {
+    fontSize: FontSize.text14Text1402_size,
+    lineHeight: 22,
+    color: ColorDark.naturalNightMode,
+    alignSelf: "stretch",
+    fontFamily: FontFamily.text14Text1401,
+    textAlign: "left",
+  },
   edukasiKesehatan: {
     fontSize: FontSize.text14Text1402_size,
     lineHeight: 22,
@@ -211,6 +221,12 @@ const styles = StyleSheet.create({
     backgroundColor: ColorDark.naturalNightMode,
     width: 156,
     height: 150,
+    paddingVertical: Padding.p_base,
+    alignItems: "flex-end",
+    justifyContent: "space-between",
+    overflow: "hidden",
+  },
+  notifParent: {
     paddingVertical: Padding.p_base,
     alignItems: "flex-end",
     justifyContent: "space-between",

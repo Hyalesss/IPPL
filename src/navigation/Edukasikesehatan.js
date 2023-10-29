@@ -1,5 +1,5 @@
 import * as React from "react";
-import { StyleSheet, Text, View, Pressable } from "react-native";
+import { StyleSheet, Text, View, Pressable, TouchableOpacity } from "react-native";
 import {
   FontFamily,
   FontSize,
@@ -8,10 +8,39 @@ import {
   Padding,
   ColorDark,
 } from "../components/Globalstyle";
-import { ScrollView } from "react-native";
+import { ScrollView , Linking } from "react-native";
 
 
 const EdukasiScreen = () => {
+
+  const openWebsite = async (url) => {
+    try {
+      const supported = await Linking.canOpenURL(url);
+
+      if (supported) {
+        await Linking.openURL(url);
+      } else {
+        console.log(`Tidak dapat membuka URL: ${url}`);
+      }
+    } catch (error) {
+      console.error('Terjadi kesalahan:', error);
+    }
+  };
+
+  const data = [
+    {
+      title: 'Luka pada alat kelamin Pria',
+      url: 'https://www.alodokter.com/penyebab-luka-di-penis',
+    },
+    {
+      title: 'Penurunan Sensitivitas Seksual',
+      url: 'https://www.halodoc.com/artikel/5-bahaya-onani-yang-dilakukan-secara-berlebih-pada-pria',
+    },
+    {
+      title: 'Pengobatan Masturbasi',
+      url: 'https://www.siloamhospitals.com/informasi-siloam/artikel/cara-mengatasi-ejakulasi-dini',
+    },
+  ];
 
   return (
     <ScrollView style={styles.edukasiScreen2}>
@@ -36,51 +65,19 @@ const EdukasiScreen = () => {
         </View>
       </Pressable>
       <View style={styles.frameParent}>
-        <Pressable
-          style={styles.lukaPadaAlatKelaminPriaParent}
-          onPress={() => {}}
-        >
-          <Text style={[styles.lukaPadaAlat, styles.lukaPadaAlatTypo]}>
-            Luka pada alat kelamin Pria
-          </Text>
-          <Text style={[styles.details, styles.detailsTypo]}>Details</Text>
-        </Pressable>
-        <View style={styles.lukaPadaAlatKelaminPriaParent}>
-          <Text style={[styles.lukaPadaAlat, styles.lukaPadaAlatTypo]}>
-            Penurunan Sensitivitas Seksual
-          </Text>
-          <Text style={[styles.details, styles.detailsTypo]}>Details</Text>
-        </View>
-        <View style={styles.lukaPadaAlatKelaminPriaParent}>
-          <Text style={[styles.lukaPadaAlat, styles.lukaPadaAlatTypo]}>
-            Dampak Psikis Yang Buruk
-          </Text>
-          <Text style={[styles.details, styles.detailsTypo]}>Details</Text>
-        </View>
-        <View style={styles.lukaPadaAlatKelaminPriaParent}>
-          <Text style={[styles.lukaPadaAlat, styles.lukaPadaAlatTypo]}>
-            Kanker Prostat
-          </Text>
-          <Text style={[styles.details, styles.detailsTypo]}>Details</Text>
-        </View>
-        <View style={styles.lukaPadaAlatKelaminPriaParent}>
-          <Text style={[styles.lukaPadaAlat, styles.lukaPadaAlatTypo]}>
-            Ejakulasi Dini
-          </Text>
-          <Text style={[styles.details, styles.detailsTypo]}>Details</Text>
-        </View>
-        <View style={styles.lukaPadaAlatKelaminPriaParent}>
-          <Text style={[styles.lukaPadaAlat, styles.lukaPadaAlatTypo]}>
-            Kecanduan Mansturbasi
-          </Text>
-          <Text style={[styles.details, styles.detailsTypo]}>Details</Text>
-        </View>
-        <View style={styles.lukaPadaAlatKelaminPriaParent}>
-          <Text style={[styles.lukaPadaAlat, styles.lukaPadaAlatTypo]}>
-            Kecanduan Mansturbasi
-          </Text>
-          <Text style={[styles.details, styles.detailsTypo]}>Details</Text>
-        </View>
+        {data.map((item, index) => (
+          <Pressable
+            key={index}
+            style={styles.lukaPadaAlatKelaminPriaParent}
+          >
+            <Text style={[styles.lukaPadaAlat, styles.lukaPadaAlatTypo]}>
+              {item.title}
+            </Text>
+            <TouchableOpacity onPress={() => openWebsite(item.url)}>
+              <Text style={[styles.details, styles.detailsTypo]}>Details</Text>
+            </TouchableOpacity>
+          </Pressable>
+        ))}
       </View>
     </ScrollView>
   );

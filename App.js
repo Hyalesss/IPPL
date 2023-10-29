@@ -65,7 +65,7 @@ export default function App() {
         <Stack.Screen name="Onboarding2" component={Onboarding2} options={{ headerShown: false }} />
         <Stack.Screen name="Onboarding3" component={Onboarding3} options={{ headerShown: false }} />
         <Stack.Screen name="MainMenu" component={Mainmenuu} options={{ headerShown: false }} />
-        <Stack.Screen name="fiturnotif" component={notiffitur} />
+        <Stack.Screen name="Notifikasi" component={notiffitur} />
         <Stack.Screen name="EdukasiCuy" component={EdukasiFitur} />
         <Stack.Screen name="CatatanCuy" component={CatatanFitur} />
         <Stack.Screen name="BuatCatatan" component={BuatCatatan} />
