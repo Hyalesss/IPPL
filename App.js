@@ -1,4 +1,5 @@
-import React, { useRef ,useState, useEffect } from 'react';
+import 'react-native-gesture-handler';
+import React, {useState, useEffect } from 'react';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -13,7 +14,6 @@ import Onboarding3 from './src/screens/onboard3';
 import BuatCatatan from './src/navigation/buatcatatan';
 import DetailCatatan from './src/navigation/detailcatatan';
 import notiffitur from './src/components/notifmuncul'
-
 
 const Stack = createStackNavigator();
 

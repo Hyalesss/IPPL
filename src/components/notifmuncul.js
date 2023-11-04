@@ -105,7 +105,7 @@
 // }
 
 import React, { useEffect } from "react";
-import {Text , StyleSheet, View } from "react-native";
+import {Text, StyleSheet, View} from "react-native";
 import * as Notifications from "expo-notifications";
 
 Notifications.setNotificationHandler({
@@ -131,12 +131,11 @@ export default function App() {
   }, []);
 
   const scheduleNotifications = () => {
-    // Menjadwalkan notifikasi pada waktu tertentu
     const timesToSchedule = [
-      { hour: 8, minute: 0 },   
-      { hour: 11, minute: 11 },  
-      { hour: 16, minute: 5 }, 
-      { hour: 21, minute: 11 },  
+      { hour: 8, minute: 0 },
+      { hour: 1, minute: 0 },
+      { hour: 5, minute: 0 },
+      { hour: 10, minute: 0 },
     ];
 
     const now = new Date();
@@ -147,11 +146,13 @@ export default function App() {
         Notifications.scheduleNotificationAsync({
           content: {
             title: "NOFAP Pengingat",
-            body: "Jangan Lupa Jaga Kesehatan , STOP COLI",
+            body: "Stop Masturbasi , Ingat Kesehatan",
+            sound: "default",
+            vibrate: [1000],
           },
           trigger: {
             date: scheduledTime,
-            repeats: true, 
+            repeats: true,
           },
         });
       }
@@ -160,7 +161,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text>Belum ada notifikasi dari Admin</Text>
+      <Text>Notifikasi Aktif</Text>
     </View>
   );
 }
@@ -173,4 +174,3 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
-

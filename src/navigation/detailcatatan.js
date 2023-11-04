@@ -4,6 +4,7 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import { Color } from "../components/Globalstyle";
 import { getDatabase, ref, update, push } from "firebase/database";
 import { firebaseApp } from "../components/index";
+import { Alert } from 'react-native';
 
 const DetailCatatan = () => {
   const navigation = useNavigation();
@@ -31,28 +32,27 @@ const DetailCatatan = () => {
       const catatanRef = ref(database, `catatanku/${editingCatatan.id}`);
       update(catatanRef, updatedCatatan)
         .then(() => {
-          console.log("Catatan berhasil diperbarui");
-          navigation.goBack(); // Kembali ke halaman sebelumnya
+          Alert.alert("Sukses", "Catatan berhasil diperbarui", [
+            { text: "OK", onPress: () => navigation.goBack() }
+          ]);
         })
         .catch((error) => {
           console.error("Gagal memperbarui catatan:", error);
         });
     } else {
-      // Ini adalah catatan baru, Anda dapat menambahkannya di sini jika diperlukan
-      // Pastikan bahwa logika tambahan yang sesuai ditambahkan untuk menambah catatan baru.
-      // Misalnya, Anda bisa menambahkannya menggunakan push ke Firebase.
       const newCatatanRef = push(ref(database, "catatanku"));
       const newCatatanKey = newCatatanRef.key;
-
+  
       const catatanku = {
         judul: judul,
         catatan: isiCatatan,
       };
-
+  
       update(ref(database, `catatanku/${newCatatanKey}`), catatanku)
         .then(() => {
-          console.log("Catatan baru berhasil ditambahkan");
-          navigation.goBack(); // Kembali ke halaman sebelumnya
+          Alert.alert("Sukses", "Catatan baru berhasil ditambahkan", [
+            { text: "OK", onPress: () => navigation.goBack() }
+          ]);
         })
         .catch((error) => {
           console.error("Gagal menambahkan catatan baru:", error);

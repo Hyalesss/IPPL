@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity, Alert } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity, Alert, Vibration } from 'react-native';
+import blockedData from '../blocked-sites.json';
 import {
   Color,
   FontSize,
@@ -9,11 +10,10 @@ import {
   ColorDark
 } from "../components/Globalstyle";
 
-
 export default function App() {
   const [url, setUrl] = useState('');
   const [isBlocked, setIsBlocked] = useState(false);
-  const [blockedType, setBlockedType] = useState(''); // Menyimpan jenis blokir
+  const [blockedType, setBlockedType] = useState('');
 
   const handleOpenUrl = () => {
     const currentUrl = url.toLowerCase();
@@ -23,9 +23,10 @@ export default function App() {
       if (type === 'blocked') {
         setBlockedType('Situs Terlarang');
       } else if (type === 'adult') {
-        setBlockedType('Konten 18+');
+        setBlockedType('Konten Dewasa 21+');
       }
       Alert.alert(blockedType, 'Jangan dibuka: ' + currentUrl);
+      Vibration.vibrate([1000, 1000, 1000]);
     } else {
       Alert.alert('Situs Aman', 'Buka situs ini: ' + currentUrl);
     }
@@ -33,19 +34,17 @@ export default function App() {
   };
 
   const isBlockedSite = (url) => {
-    const blockedSites = ['https://rrqtopup.com', 'https://tailwindcss.com', 'https://situs3.com'];
-    const adultSites = ['https://adultsite1.com', 'https://adultsite2.com', 'https://adultsite3.com'];
-  
+    const { blockedSites, adultSites } = blockedData;
+
     if (blockedSites.some(blockedUrl => url.includes(blockedUrl))) {
       return { isBlocked: true, type: 'blocked' };
     }
     if (adultSites.some(adultUrl => url.includes(adultUrl))) {
       return { isBlocked: true, type: 'adult' };
     }
-    
+
     return { isBlocked: false, type: '' };
   };
-  
 
   const handleUrlChange = (text) => {
     setUrl(text);

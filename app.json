@@ -6,10 +6,10 @@
     "orientation": "portrait",
     "icon": "./src/assets/logofap.png",
     "userInterfaceStyle": "light",
-    "splash": {
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
+    // "splash": {
+    //   "resizeMode": "contain",
+    //   "backgroundColor": "#ffffff"
+    // },
     "assetBundlePatterns": [
       "**/*"
     ],
@@ -29,7 +29,17 @@
     "extra": {
       "eas": {
         "projectId": "174f51f0-78dd-487d-a047-2acd023c1cfc"
-      }
+      },
+      "plugins": [
+        [
+          "expo-build-properties",
+          {
+            "android": {
+              "compileSdkVersion": 33
+            }
+          }
+        ]
+      ]
     }
   }
 }
